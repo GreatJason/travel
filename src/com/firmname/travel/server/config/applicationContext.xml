@@ -13,5 +13,7 @@
       
       <context:annotation-config/>
       
+      <import resource="classpath:com/firmname/travel/server/config/ds-context.xml"/>
       <import resource="classpath:com/firmname/travel/server/config/dao-context.xml"/>
+      <import resource="classpath:com/firmname/travel/server/config/service-context.xml"/>
 </beans>

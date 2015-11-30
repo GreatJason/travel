@@ -11,4 +11,40 @@
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
       
+	<bean id="userDao" class="com.firmname.travel.server.dao.impl.UserDaoImpl">
+		<property name="dataSource" ref="mysql_ds"/>
+		<property name="insertUserSql">
+			<value>
+				<![CDATA[
+					INSERT INTO TRAVEL.USER(USER_ID, USER_NAME, NICK_NAME, SEX, PHONE, BIRTH_DT, EMAIL) VALUES (
+						:userId,
+						:userName,
+						:nickName,
+						:sex,
+						:phone,
+						:birthDate,
+						:email
+					)
+				]]>
+			</value>
+		</property>
+		
+		<property name="selectUserSql">
+			<value>
+				<![CDATA[
+					SELECT
+						USER_ID AS ID,
+						USER_NAME AS NAME,
+						NICK_NAME AS NICK_NAME,
+						SEX AS SEX,
+						BIRTH_DT AS BIRTH_DATE,
+						PHONE AS PHONE,
+						EMAIL AS EMAIL
+					FROM 
+						TRAVEL.USER 
+					WHERE USER_ID = :userId
+				]]>
+			</value>
+		</property>
+	</bean>
 </beans>
