@@ -1,5 +1,7 @@
 package com.firmname.travel.server.model;
 
+import java.util.Date;
+
 public class User {
 	private String id;
 	private String nickName;
@@ -7,6 +9,8 @@ public class User {
 	private String sex;
 	private String phone;
 	private String email;
+	private Date birthDate;
+	
 	public String getId() {
 		return id;
 	}
@@ -42,5 +46,11 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Date getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 }
