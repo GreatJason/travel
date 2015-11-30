@@ -1,0 +1,44 @@
+.site-nav {
+    height: 30px;
+    background-color: lightgrey;
+}
+
+.logo-img {
+    float: left;
+}
+
+.logo-text {
+    float: left;
+    font-family: 'Satisfy', cursive, PT Sans;
+    color: #fa1123;
+    font-size: 27px;
+    margin: 34px 20px 19px 30px;
+    width: 300px;
+}
+
+.content {
+    min-height: 500px;
+}
+
+.banner {
+    position: relative;
+    overflow: auto;
+}
+
+.banner li {
+    list-style: none;
+}
+
+.banner ul li {
+    float: left;
+}
+
+.footer-main {
+    height: 80px;
+    background-color: lightgrey;
+}
+
+.footer-copyright {
+    height: 35px;
+    background-color: grey;
+}
