@@ -45,8 +45,10 @@ public class RowMapperClass<T> implements RowMapper<T>{
 		BeanMap beanMap = BeanMap.create(obj);
 		int colCount = rs.getMetaData().getColumnCount();
 		for(int i = 1; i <= colCount; ++i){
-			String columnName = rs.getMetaData().getColumnName(i);
-			beanMap.put(Utils.columnName2FieldName(columnName), rs.getObject(i));
+			String columnName = rs.getMetaData().getColumnLabel(i);
+			String fieldName = Utils.columnName2FieldName(columnName);
+			System.out.println("col: " + columnName + "\t" + "field: " + fieldName);
+			beanMap.put(fieldName, rs.getObject(i));
 		}
 		
 		if(defaultValues != null && !defaultValues.isEmpty()){
