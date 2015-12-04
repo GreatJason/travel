@@ -2,9 +2,9 @@ $(function () {
   // global dependencies
   var deps = ["startup"];
 
-  define("main", deps, function () {
+  // define("main", deps, function () {
     
-  });
+  // });
 
   var unslider = $('.banner').unslider();
 
