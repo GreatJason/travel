@@ -16,20 +16,21 @@
 		<property name="insertUserSql">
 			<value>
 				<![CDATA[
-					INSERT INTO TRAVEL.USER(USER_ID, USER_NAME, NICK_NAME, SEX, PHONE, BIRTH_DT, EMAIL) VALUES (
+					INSERT INTO TRAVEL.USER(USER_ID, USER_NAME, NICK_NAME, SEX, PHONE, BIRTH_DT, EMAIL, PASSWORD) VALUES (
 						:userId,
 						:userName,
 						:nickName,
 						:sex,
 						:phone,
 						:birthDate,
-						:email
+						:email,
+						:password
 					)
 				]]>
 			</value>
 		</property>
 		
-		<property name="selectUserSql">
+		<property name="selectUserByIdSql">
 			<value>
 				<![CDATA[
 					SELECT
@@ -43,6 +44,42 @@
 					FROM 
 						TRAVEL.USER 
 					WHERE USER_ID = :userId
+				]]>
+			</value>
+		</property>
+		<property name="selectUserByPhonePasswordSql">
+			<value>
+				<![CDATA[
+					SELECT
+						USER_ID AS ID,
+						USER_NAME AS NAME,
+						NICK_NAME AS NICK_NAME,
+						SEX AS SEX,
+						BIRTH_DT AS BIRTH_DATE,
+						PHONE AS PHONE,
+						EMAIL AS EMAIL
+					FROM 
+						TRAVEL.USER 
+					WHERE 
+						PHONE = :phone AND PASSWORD = :password
+				]]>
+			</value>
+		</property>
+		<property name="selectUserByEmailPasswordSql">
+			<value>
+				<![CDATA[
+					SELECT
+						USER_ID AS ID,
+						USER_NAME AS NAME,
+						NICK_NAME AS NICK_NAME,
+						SEX AS SEX,
+						BIRTH_DT AS BIRTH_DATE,
+						PHONE AS PHONE,
+						EMAIL AS EMAIL
+					FROM 
+						TRAVEL.USER 
+					WHERE 
+						EMAIL = :email AND PASSWORD = :password
 				]]>
 			</value>
 		</property>

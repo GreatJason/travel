@@ -1,14 +1,16 @@
 package com.firmname.travel.server.model;
 
 import java.util.Date;
+import java.util.UUID;
 
-public class User {
+public final class User {
 	private String id;
 	private String nickName;
 	private String name;
 	private String sex;
 	private String phone;
 	private String email;
+	private String password;
 	private Date birthDate;
 	
 	public String getId() {
@@ -52,5 +54,24 @@ public class User {
 	}
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	/**
+	 * populate UUID to user id
+	 */
+	public void populateId(){
+		this.id = UUID.randomUUID().toString();
+	}
+	
+	@Override
+	public String toString(){
+		//TODO: to finish
+		return super.toString();
 	}
 }
