@@ -19,17 +19,15 @@ public class Logger {
 	
 	public static org.slf4j.Logger initLogger(){
 		
-		synchronized (loggerCache) {
-			org.slf4j.Logger logger = null;
-			String currentClass =  Thread.currentThread().getStackTrace()[2].getClassName();
-			if(loggerCache.containsKey(currentClass)){
-				logger = loggerCache.get(currentClass);
-			}else{
-				logger = LoggerFactory.getLogger(currentClass);
-				loggerCache.put(currentClass, logger);
-			}
-			return logger;
+		org.slf4j.Logger logger = null;
+		String currentClass =  Thread.currentThread().getStackTrace()[2].getClassName();
+		if(loggerCache.containsKey(currentClass)){
+			logger = loggerCache.get(currentClass);
+		}else{
+			logger = LoggerFactory.getLogger(currentClass);
+			loggerCache.put(currentClass, logger);
 		}
+		return logger;
 		
 	}
 	
