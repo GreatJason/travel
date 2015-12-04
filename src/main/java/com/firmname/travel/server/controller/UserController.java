@@ -54,7 +54,7 @@ public class UserController {
 				} 
 			}
 		} catch(Exception e){
-			Logger.error(e);
+			Logger.error("exception happened while login!", e);
 			ret = ErrorCode.EXCEPTION.errorMessage();
 		}
 		return ret;
@@ -66,7 +66,7 @@ public class UserController {
 			String message = userService.addUser(user).errorMessage();
 			return message;
 		} catch(Exception e){
-			Logger.error(e);
+			Logger.error("exception happened while register user!", e);
 			return ErrorCode.EXCEPTION.errorMessage();
 		}
 	}

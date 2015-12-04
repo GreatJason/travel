@@ -21,7 +21,7 @@ public final class UserService {
 			user.populateId();
 			Logger.debug("user trying to register {}", user.getId());
 			ErrorCode ret = userDao.addUser(user);
-			Logger.debug("user register status: {}", user.getId());
+			Logger.debug("user register status: {}", ret.errorMessage());
 			return ret;
 		} else{
 			return ErrorCode.USER_INVALID;

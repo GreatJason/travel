@@ -31,7 +31,7 @@ public class HttpTestBase {
 		try{
 			restTemplate.put(prepareUrl(urlAfterRoot), request, urlVariables);
 		} catch(RestClientException e){ 
-			Logger.error(e);
+			Logger.error("fail to put request to server", e);
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class HttpTestBase {
 			headers.setContentType(MediaType.parseMediaType("application/json; charset=UTF-8"));
 			return new HttpEntity<String>(new ObjectMapper().writeValueAsString(requestBody), headers);
 		} catch(JsonProcessingException e){
-			Logger.error(e);
+			Logger.error("fail to generate application/json header", e);
 			return null;
 		}
 	}

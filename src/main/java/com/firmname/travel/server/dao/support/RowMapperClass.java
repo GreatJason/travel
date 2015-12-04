@@ -34,9 +34,9 @@ public class RowMapperClass<T> implements RowMapper<T>{
 			try {
 				obj = clazz.newInstance();
 			} catch (InstantiationException e) {
-				Logger.error(e);
+				Logger.error("RowMapperClass failed to create instance!", e);
 			} catch (IllegalAccessException e) {
-				Logger.error(e);
+				Logger.error("IllegalAccessException in RowMapperClass", e);
 			}
 		} else{
 			return null;
