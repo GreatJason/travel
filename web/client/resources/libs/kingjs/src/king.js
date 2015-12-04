@@ -2,15 +2,15 @@
 
 //  (c) 2015    Wang, Zhenjun
 
+var define, require, use;
 (function () {
   var moduleMap = {};
   var fileMap = {};
 
   var noop = function () {};
 
-  var king = function () {
+  var king = function () {};
 
-  };
   var core = {
     define: function (name, dependencies, factory) {
       if (!moduleMap[name]) {
@@ -20,6 +20,13 @@
           factory: factory
         };
         moduleMap[name] = module;
+
+        // loop handle deps
+        for (var i = 0; i < dependencies.length; i++) {
+          if (!moduleMap[dependencies[i]]) {
+            require([dependencies[i]]);
+          }
+        }
       }
       return moduleMap[name];
     },
@@ -46,6 +53,7 @@
     require: function (pathArr, callback) {
       for (var i = 0; i < pathArr.length; i++) {
         var path = pathArr[i];
+        path = path.replace(/\./g, '/');
 
         if (!fileMap[path]) {
           var head = document.getElementsByTagName('head')[0];
@@ -138,6 +146,9 @@
   });
 
   window.king = king;
+  define = king.define;
+  require = king.require;
+  use = king.use;
 
   king.on("ready", function () {
     king.require(["../src/modules/core/binding"], function () {
