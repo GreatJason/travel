@@ -35,29 +35,32 @@ public class UserDaoImpl extends NamedParameterJdbcDaoSupport implements UserDao
 		//TODO: check user existing or not
 		return 1 == getNamedParameterJdbcTemplate().update(insertUserSql, param) ? ErrorCode.Success : ErrorCode.DB_ERROR;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public User getUserById(String userId){
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("userId", userId);
-		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByIdSql, param, new RowMapperClass<User>(User.class));
+		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByIdSql, param, RowMapperClass.valueOf(User.class));
 		return CollectionUtils.isNotEmpty(users) ? users.get(0) : null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public User getUserByPhone(String phone, String password) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("phone", phone);
 		param.addValue("password", password);
-		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByPhonePasswordSql, param, new RowMapperClass<User>(User.class));
+		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByPhonePasswordSql, param, RowMapperClass.valueOf(User.class));
 		return CollectionUtils.isNotEmpty(users) ? users.get(0) : null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public User getUserByEmail(String email, String password) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("email", email);
 		param.addValue("password", password);
-		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByEmailPasswordSql, param, new RowMapperClass<User>(User.class));
+		List<User> users = this.getNamedParameterJdbcTemplate().query(selectUserByEmailPasswordSql, param, RowMapperClass.valueOf(User.class));
 		return CollectionUtils.isNotEmpty(users) ? users.get(0) : null;
 	}
 	

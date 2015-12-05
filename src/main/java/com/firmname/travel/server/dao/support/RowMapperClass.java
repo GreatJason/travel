@@ -12,27 +12,31 @@ import org.springframework.jdbc.core.RowMapper;
 import com.firmname.travel.server.util.Logger;
 import com.firmname.travel.server.util.Utils;
 
-public class RowMapperClass<T> implements RowMapper<T>{
+@SuppressWarnings("rawtypes")
+public final class RowMapperClass implements RowMapper{
 
-	private Class<T> clazz;
-	private Map<String, Object> defaultValues;
-	
-	
-	public RowMapperClass(Class<T> clazz){
-		this.clazz = clazz;
+	private ThreadLocal<Class<?>> clazz = new ThreadLocal<Class<?>>();
+	private ThreadLocal<Map<String, Object>> defaultValues = new ThreadLocal<Map<String,Object>>();
+	private final static RowMapperClass instance = new RowMapperClass();
+	private RowMapperClass() {
 	}
 	
-	public RowMapperClass(Class<T> clazz, Map<String, Object> defaultValues) {
-		this.clazz = clazz;
-		this.defaultValues = defaultValues;
-		
+	public static <T> RowMapperClass valueOf(Class<T> clazz){
+		return valueOf(clazz, null);
 	}
+	
+	public static <T> RowMapperClass valueOf(Class<T> clazz, Map<String, Object> defaultValues){
+		instance.clazz.set(clazz);
+		instance.defaultValues.set(defaultValues);
+		return instance;
+	}
+	
 	@Override
-	public T mapRow(ResultSet rs, int rowNum) throws SQLException {
-		T obj = null;
-		if(clazz != null){
+	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Object obj = null;
+		if(clazz.get() != null){
 			try {
-				obj = clazz.newInstance();
+				obj = clazz.get().newInstance();
 			} catch (InstantiationException e) {
 				Logger.error("RowMapperClass failed to create instance!", e);
 			} catch (IllegalAccessException e) {
@@ -49,8 +53,8 @@ public class RowMapperClass<T> implements RowMapper<T>{
 			beanMap.put(Utils.columnName2FieldName(columnName), rs.getObject(i));
 		}
 		
-		if(defaultValues != null && !defaultValues.isEmpty()){
-			for(Entry<String, Object> entry:defaultValues.entrySet()){
+		if(defaultValues.get() != null && !defaultValues.get().isEmpty()){
+			for(Entry<String, Object> entry:defaultValues.get().entrySet()){
 				beanMap.put(entry.getKey(), entry.getValue());
 			}
 		}

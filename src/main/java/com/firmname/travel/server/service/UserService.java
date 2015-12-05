@@ -52,16 +52,6 @@ public final class UserService {
 		return user;
 	}
 	
-	public User loginWithPhoneEmail(String phoneEmail, String password){
-		if(Utils.isValidPhone(phoneEmail)){
-			return loginWithPhone(phoneEmail, password);
-		} else if(Utils.isValidEmail(phoneEmail)){
-			return loginWithEmail(phoneEmail, password);
-		}
-		Logger.warn("login failed, invalid phone or email {}", phoneEmail);
-		return null;
-	}
-	
 	/**
 	 * 
 	 * @param identifier

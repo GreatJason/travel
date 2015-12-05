@@ -1,6 +1,6 @@
 package com.firmname.travel.server.service;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.UUID;
 
@@ -24,8 +24,10 @@ public class UserServiceTest extends BaseTest{
 	@Test
 	public void loginTest(){
 		UserService userService = getBean(UserService.class);
-		assertTrue(null == userService.loginWithPhoneEmail(UUID.randomUUID().toString(), UUID.randomUUID().toString()));
-		assertTrue(null == userService.loginWithPhoneEmail("13812345678", UUID.randomUUID().toString()));
-		assertTrue(null == userService.loginWithPhoneEmail("errorAccount@163.com", UUID.randomUUID().toString()));
+		assertNull(userService.loginWithPhone(UUID.randomUUID().toString(), UUID.randomUUID().toString()));
+		assertNull(userService.loginWithPhone("13812345678", UUID.randomUUID().toString()));
+		assertNull(userService.loginWithEmail("errorAccount@163.com", UUID.randomUUID().toString()));
+		assertNotNull(userService.loginWithPhone("13512345678", "dasiyebushuo"));
+		assertNotNull(userService.loginWithEmail("registerpro@163.com", "dasiyebushuo"));
 	}
 }
