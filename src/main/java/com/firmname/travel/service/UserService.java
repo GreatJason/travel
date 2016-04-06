@@ -1,14 +1,14 @@
-package com.firmname.travel.server.service;
+package com.firmname.travel.service;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.firmname.travel.server.dao.UserDao;
-import com.firmname.travel.server.model.ErrorCode;
-import com.firmname.travel.server.model.User;
-import com.firmname.travel.server.util.Logger;
-import com.firmname.travel.server.util.Utils;
+import com.firmname.travel.dao.UserDao;
+import com.firmname.travel.model.ErrorCode;
+import com.firmname.travel.model.User;
+import com.firmname.travel.util.Logger;
+import com.firmname.travel.util.Utils;
 
 @Service
 public final class UserService {

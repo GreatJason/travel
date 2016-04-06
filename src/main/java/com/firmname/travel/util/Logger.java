@@ -1,4 +1,4 @@
-package com.firmname.travel.server.util;
+package com.firmname.travel.util;
 
 import java.util.HashMap;
 import java.util.Map;

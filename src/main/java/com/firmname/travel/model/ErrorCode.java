@@ -1,4 +1,4 @@
-package com.firmname.travel.server.model;
+package com.firmname.travel.model;
 
 public enum ErrorCode {
 	Success(0, "Succeed"),

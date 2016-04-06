@@ -1,11 +1,11 @@
-package com.firmname.travel.server.controller;
+package com.firmname.travel.controller;
 
 import java.util.UUID;
 
 import org.junit.Test;
 
-import com.firmname.travel.server.common.HttpTestBase;
-import com.firmname.travel.server.model.User;
+import com.firmname.travel.common.HttpTestBase;
+import com.firmname.travel.model.User;
 
 public class UserControllerTest extends HttpTestBase{
 	@Test

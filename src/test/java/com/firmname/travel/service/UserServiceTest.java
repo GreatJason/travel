@@ -1,13 +1,14 @@
-package com.firmname.travel.server.service;
+package com.firmname.travel.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.UUID;
 
 import org.junit.Test;
 
-import com.firmname.travel.server.common.BaseTest;
-import com.firmname.travel.server.model.User;
+import com.firmname.travel.common.BaseTest;
+import com.firmname.travel.model.User;
 
 public class UserServiceTest extends BaseTest{
 	

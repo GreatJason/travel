@@ -1,4 +1,4 @@
-package com.firmname.travel.server.controller;
+package com.firmname.travel.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.firmname.travel.server.model.ErrorCode;
-import com.firmname.travel.server.model.User;
-import com.firmname.travel.server.service.UserService;
-import com.firmname.travel.server.util.Logger;
+import com.firmname.travel.model.ErrorCode;
+import com.firmname.travel.model.User;
+import com.firmname.travel.service.UserService;
+import com.firmname.travel.util.Logger;
 
 @Controller
 @RequestMapping("/user")

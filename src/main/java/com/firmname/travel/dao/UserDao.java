@@ -1,7 +1,7 @@
-package com.firmname.travel.server.dao;
+package com.firmname.travel.dao;
 
-import com.firmname.travel.server.model.ErrorCode;
-import com.firmname.travel.server.model.User;
+import com.firmname.travel.model.ErrorCode;
+import com.firmname.travel.model.User;
 
 public interface UserDao {
 	ErrorCode addUser(User user);

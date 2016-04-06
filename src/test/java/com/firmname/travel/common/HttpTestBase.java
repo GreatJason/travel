@@ -1,4 +1,4 @@
-package com.firmname.travel.server.common;
+package com.firmname.travel.common;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.firmname.travel.server.util.Logger;
+import com.firmname.travel.util.Logger;
 
 public class HttpTestBase {
 	private final String urlPrefix = "http://localhost:8080/travel/";

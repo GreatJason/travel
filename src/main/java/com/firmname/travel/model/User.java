@@ -1,4 +1,4 @@
-package com.firmname.travel.server.model;
+package com.firmname.travel.model;
 
 import java.util.Date;
 import java.util.UUID;
