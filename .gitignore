@@ -44,3 +44,8 @@ Temporary Items
 
 #binary class file
 .class
+/build/
+/.classpath
+/bin/
+
+test/com/firmname/travel/server/BaseTest.java
