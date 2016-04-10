@@ -1,6 +1,5 @@
 package com.firmname.travel.service;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +8,7 @@ import com.firmname.travel.model.ErrorCode;
 import com.firmname.travel.model.User;
 import com.firmname.travel.util.Logger;
 import com.firmname.travel.util.Utils;
+import com.google.common.base.Strings;
 
 @Service
 public final class UserService {
@@ -33,7 +33,7 @@ public final class UserService {
 	}
 
 	public User loginWithPhone(String phone, String password) {
-		if(!Utils.isValidPhone(phone)  || StringUtils.isBlank(password)){
+		if(!Utils.isValidPhone(phone)  || Strings.isNullOrEmpty(password)){
 			Logger.debug("invalid user phone or password");
 			return null;
 		}
@@ -43,7 +43,7 @@ public final class UserService {
 	}
 	
 	public User loginWithEmail(String email, String password) {
-		if(!Utils.isValidEmail(email) || StringUtils.isBlank(password)){
+		if(!Utils.isValidEmail(email) || Strings.isNullOrEmpty(password)){
 			Logger.debug("invalid user email or password");
 			return null;
 		}

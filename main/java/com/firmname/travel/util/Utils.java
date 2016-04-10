@@ -16,9 +16,8 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.google.common.base.CaseFormat;
+import com.google.common.base.Strings;
 
 public final class Utils {
 	private Utils(){
@@ -40,7 +39,7 @@ public final class Utils {
 	}
 	
 	public static boolean isValidPublicKey(String encryptedModulus, String encryptedPublicExp){
-		if(StringUtils.isBlank(encryptedModulus) || StringUtils.isBlank(encryptedPublicExp)){
+		if(Strings.isNullOrEmpty(encryptedModulus) || Strings.isNullOrEmpty(encryptedPublicExp)){
 			return false;
 		}
 		return encryptedModulus.equals(RsaUtils.getEncryptedRsaModulus()) &&
