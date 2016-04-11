@@ -78,7 +78,7 @@ public final class Utils {
 	    		BigInteger iModulus = new BigInteger(modulusStr);    
 				BigInteger iPrivateExp = new BigInteger(privateExpStr);    
 				BigInteger iPublicExp = new BigInteger(publicExpStr);    
-				KeyFactory keyFactory = KeyFactory.getInstance("RSA", new org.bouncycastle.jce.provider.BouncyCastleProvider());
+				KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 				RSAPrivateKeySpec privateKeySpec = new RSAPrivateKeySpec(iModulus, iPrivateExp);    
 				tempPrivateKey = (RSAPrivateKey) keyFactory.generatePrivate(privateKeySpec);
 				
@@ -104,7 +104,7 @@ public final class Utils {
 
     	protected static String encryptByPublicKey(String data){
     		try {
-    			Cipher cipher = Cipher.getInstance("RSA", new org.bouncycastle.jce.provider.BouncyCastleProvider());
+    			Cipher cipher = Cipher.getInstance("RSA");
     			cipher.init(Cipher.ENCRYPT_MODE, publicKey);
     			//the max length of data can be encrypted each time <= publicKey module length - 11 
     			int maxLen = (publicKey.getModulus().bitLength() / 8) - 12;
@@ -123,7 +123,7 @@ public final class Utils {
     	
     	public static String decryptByPrivateKey(String data){
     		try {
-    			Cipher cipher = Cipher.getInstance("RSA", new org.bouncycastle.jce.provider.BouncyCastleProvider());
+    			Cipher cipher = Cipher.getInstance("RSA");
     			cipher.init(Cipher.DECRYPT_MODE, privateKey);
     			int maxLen = privateKey.getModulus().bitLength() / 8;
     			StringBuffer decrypted = new StringBuffer();
